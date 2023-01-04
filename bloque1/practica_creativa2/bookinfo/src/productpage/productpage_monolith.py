@@ -61,9 +61,15 @@ detailsHostname = "details" if (os.environ.get("DETAILS_HOSTNAME") is None) else
 ratingsHostname = "ratings" if (os.environ.get("RATINGS_HOSTNAME") is None) else os.environ.get("RATINGS_HOSTNAME")
 reviewsHostname = "reviews" if (os.environ.get("REVIEWS_HOSTNAME") is None) else os.environ.get("REVIEWS_HOSTNAME")
 
-os.environ['GROUP_NUMBER']="Equipo 47" 
+os.environ['GROUP_NUMBER']="Equipo 02" 
 
-os.environ['GROUP_NUMBER']="Equipo 47" 
+os.environ['GROUP_NUMBER']="Equipo 02" 
+
+os.environ['GROUP_NUMBER']="Equipo 02" 
+
+os.environ['GROUP_NUMBER']="Equipo 02" 
+
+os.environ['GROUP_NUMBER']="Equipo 02" 
 
 flood_factor = 0 if (os.environ.get("FLOOD_FACTOR") is None) else int(os.environ.get("FLOOD_FACTOR"))
 
@@ -355,7 +361,7 @@ def getProducts():
     return [
         {
             'id': 0,
-'title': 'The Comedy of Errors ' +os.environ['GROUP_NUMBER'],            'descriptionHtml': '<a href="https://en.wikipedia.org/wiki/The_Comedy_of_Errors">Wikipedia Summary</a>: The Comedy of Errors is one of <b>William Shakespeare\'s</b> early plays. It is his shortest and one of his most farcical comedies, with a major part of the humour coming from slapstick and mistaken identity, in addition to puns and word play.'
+'title': 'The Comedy of Errors ' + os.environ['GROUP_NUMBER'],            'descriptionHtml': '<a href="https://en.wikipedia.org/wiki/The_Comedy_of_Errors">Wikipedia Summary</a>: The Comedy of Errors is one of <b>William Shakespeare\'s</b> early plays. It is his shortest and one of his most farcical comedies, with a major part of the humour coming from slapstick and mistaken identity, in addition to puns and word play.'
         },
         {
             'id': 1,
@@ -453,6 +459,9 @@ def fetch_details_from_external_service(isbn, id, headers):
     return {
         'id' : id,
         'author': book['authors'][0],
+        'equipo' : os.environ['GROUP_NUMBER'],
+        'equipo' : os.environ['GROUP_NUMBER'],
+        'equipo' : os.environ['GROUP_NUMBER'],
         'equipo' : os.environ['GROUP_NUMBER'],
         'equipo' : os.environ['GROUP_NUMBER'],
         'year': book['publishedDate'],
