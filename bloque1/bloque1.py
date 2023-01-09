@@ -8,24 +8,18 @@ call(["sudo apt-get update"], shell=True)
 #call(["echo 'y' | sudo apt-get update"], shell=True) #El eco para el mensaje por pantalla
 call(["sudo apt install python3-pip"], shell=True)	#Para poder usar pip (install)
 #call(["echo 'y' | sudo apt install python3-pip"], shell=True) #El eco para el mensaje por pantalla
-call(["git clone https://github.com/CDPS-ETSIT/practica_creativa2.git"], shell=True)
-#---------------------------------------------------------
-call(["sudo pip3 install urllib3"], shell=True)
-call(["sudo pip3 install flask_bootstrap"], shell=True)
-call(["sudo pip3 install chardet"], shell=True)
-call(["sudo pip3 install jaeger_client"], shell=True)
-call(["sudo pip3 install opentracing_instrumentation"], shell=True)
-call(["sudo pip3 install json2html"], shell=True)
-#-----------------------------------------------------------
-call(["pip3 install -r practica_creativa2/bookinfo/src/productpage/requirements.txt"],shell=True) #-r obliga a sobreescribir al copiar
+call(["git clone https://github.com/angelfergen/practica2_bloque1.git"], shell=True)
+#python3 -m pip= pip3
+
+call(["pip3 install -r practica2_bloque1/bookinfo/src/productpage/requirements.txt"],shell=True) #-r obliga a sobreescribir al copiar
 call(["pip3 install --upgrade requests"], shell=True)
 call(["sudo apt-get update"], shell=True)
 
 print("------------------HOLAAAAAAAAAAA todo instalado------------------")
 
 #Nos ponemos a modificar lo del group_number
-fin = open("practica_creativa2/bookinfo/src/productpage/productpage_monolith.py",'r')
-fout = open("practica_creativa2/bookinfo/src/productpage/productpage_monolith2.py",'w')
+fin = open("practica2_bloque1/bookinfo/src/productpage/productpage_monolith.py",'r')
+fout = open("practica2_bloque1/bookinfo/src/productpage/productpage_monolith2.py",'w')
 
 for line in fin:
 
@@ -51,14 +45,14 @@ for line in fin:
 fin.close()
 fout.close()
 
-call(["sudo cp practica_creativa2/bookinfo/src/productpage/productpage_monolith2.py practica_creativa2/bookinfo/src/productpage/productpage_monolith.py"], shell= True)
-call(["sudo rm practica_creativa2/bookinfo/src/productpage/productpage_monolith2.py"], shell= True)
+call(["sudo cp practica2_bloque1/bookinfo/src/productpage/productpage_monolith2.py practica_creativa2/bookinfo/src/productpage/productpage_monolith.py"], shell= True)
+call(["sudo rm practica2_bloque1/bookinfo/src/productpage/productpage_monolith2.py"], shell= True)
 
 #-------------------------------------------------------------------------------
 
 #Nos ponemos a modificar el titulo del html
-fin = open("practica_creativa2/bookinfo/src/productpage/templates/productpage.html",'r')
-fout = open("practica_creativa2/bookinfo/src/productpage/templates/productpage2.html",'w')
+fin = open("practica2_bloque1/bookinfo/src/productpage/templates/productpage.html",'r')
+fout = open("practica2_bloque1/bookinfo/src/productpage/templates/productpage2.html",'w')
 
 for line in fin:
 	if "{% block title %}Simple Bookstore App{% endblock %}" in line:
@@ -71,12 +65,7 @@ for line in fin:
 fin.close()
 fout.close()
 
-call(["sudo cp practica_creativa2/bookinfo/src/productpage/templates/productpage2.html practica_creativa2/bookinfo/src/productpage/templates/productpage.html"], shell= True)
-call(["sudo rm practica_creativa2/bookinfo/src/productpage/templates/productpage2.html"], shell= True)
+call(["sudo cp practica2_bloque1/bookinfo/src/productpage/templates/productpage2.html practica_creativa2/bookinfo/src/productpage/templates/productpage.html"], shell= True)
+call(["sudo rm practica2_bloque1/bookinfo/src/productpage/templates/productpage2.html"], shell= True)
 
-call(["sudo python3 practica_creativa2/bookinfo/src/productpage/productpage_monolith.py 9080"],shell=True)
-
-
-
-
-
+call(["sudo python3 practica2_bloque1/bookinfo/src/productpage/productpage_monolith.py 9080"],shell=True)
