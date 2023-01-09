@@ -1,4 +1,5 @@
-FROM node:12.18.1-slim #Imagen base a utilizar
+FROM node:12.18.1-slim
+#Imagen base a utilizar
 #RUN git clone https://github.com/angelfergen/practica_creativa2
 COPY package.json /opt/microservices/
 COPY ratings.js /opt/microservices/

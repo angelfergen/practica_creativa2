@@ -1,4 +1,4 @@
-FROM python:3.8.10
+FROM python:3.7
 RUN git clone https://github.com/angelfergen/practica_creativa2
 WORKDIR practica_creativa2
 ENV GROUP_NUMBER 'Grupo 02'
