@@ -2,79 +2,51 @@ version: '3'		#He puesto esta version de docker-compose.file en funcion de la Do
 			#Además, la version 1 no se puede pq no deja usar volumes, y siempre será mejor una version 
 			#actualizada que la 2, por eso la 3
 services:
-	productpage:
-		build: ./bookinfo/src/productpage/.
-		image: 02/productpage
-		container_name: 02-productpage
-		ports:
-			-'9020:9080' #Mirar esto, no está bien, no puede haber un microservicio que esté usando el mismo puerto que otro
+  productpage:
+    build: ./bookinfo/src/productpage/.
+    image: 02/productpage
+    container_name: 02-productpage
+    ports:
+      - '9020:9080' #Mirar esto, no está bien, no puede haber un microservicio que esté usando el mismo puerto que otro
 			#Primero puerto del host, segundo puerto del container
-		environment:
-			-GROUP_NUMBER=02
-			
+    environment:
+      -GROUP_NUMBER=02
+		
 		#Y los volumes son necesarios?Si,ya que tenemos que definir los volumnes que va a necestirar nuestra infraestructura 
 		#Ejemplo de volumes: volumes:
       		#	- myapp:/home/node/app
-      		
-		volumes:
-			-02_app:/var/lib/productpage	#Ruta de donde va a estar el volumen este
+      		#NO SON NECESARIOS
+		#volumes:
+		#	-02_app:/var/lib/productpage	#Ruta de donde va a estar el volumen este
 			
-	details:
-	
-		build: ./bookinfo/src/details/.
-		image: 02/details
-		container_name: 02-details
-		ports:
-			-'9021:9080' #Mirar esto, no está bien, no puede haber un microservicio que esté usando el mismo puerto que otro
+  details:
+    build: ./bookinfo/src/details/.
+    image: 02/details
+    container_name: 02-details
+    #ports:
+      #-'9021:9080' #Mirar esto, no está bien, no puede haber un microservicio que esté usando el mismo puerto que otro
 			#Primero puerto del host, segundo puerto del container
-		environment:
-			-SERVICE_VERSION=v1
-			-ENABLE_EXTERNAL_BOOK_SERVICE=true
-			
-		#Y los volumes son necesarios?Si,ya que tenemos que definir los volumnes que va a necestirar nuestra infraestructura 
-		#Ejemplo de volumes: volumes:
-      		#	- myapp:/home/node/app
-      		
-		volumes:
-			-02_app:/var/lib/details
-			
-	ratings:
-	
-		build: ./bookinfo/src/ratings/.
-		image: 02/ratings
-		container_name: 02-ratings
-		ports:
-			-'9022:9080' #Mirar esto, no está bien, no puede haber un microservicio que esté usando el mismo puerto que otro
-			#Primero puerto del host, segundo puerto del container
-		environment:
-			-SERVICE_VERSION=v1
-			
-		#Y los volumes son necesarios?Si,ya que tenemos que definir los volumnes que va a necestirar nuestra infraestructura 
-		#Ejemplo de volumes: volumes:
-      		#	- myapp:/home/node/app
-      		
-		volumes:
-			-02_app:/var/lib/ratings	#Ruta de donde va a estar el volumen este
+    environment:
+      - SERVICE_VERSION=v1
+      - ENABLE_EXTERNAL_BOOK_SERVICE=true	
+      
+  ratings:
+    build: ./bookinfo/src/ratings/.
+    image: 02/ratings
+    container_name: 02-ratings
+#ports:
+#	-'9022:9080' #Mirar esto, no está bien, no puede haber un microservicio que esté usando el mismo puerto que otro
+#Primero puerto del host, segundo puerto del container
+    environment:
+      - SERVICE_VERSION=v1
+
 #----------------------------------------------------------
 #---Tenemos que poner los 3 reviews?? no se como se ponen los 3, pq teoricamente solo hay un microservicio que es reviews, y dentro hay 3 versiones distintas.
-	reviews:
-		build: ./bookinfo/src/reviews/reviews-wlpcfg/reviewsV1/.
-		image: 02/reviews
-		container_name: 02-reviews
-		ports:
-			-'9023:9080' #Mirar esto, no está bien, no puede haber un microservicio que esté usando el mismo puerto que otro
-			#Primero puerto del host, segundo puerto del container
-		environment:
-			-SERVICE_VERSION=v1
-		#Y los volumes son necesarios?Si,ya que tenemos que definir los volumnes que va a necestirar nuestra infraestructura 
-		#Ejemplo de volumes: volumes:
-      		#	- myapp:/home/node/app
-		volumes:
-			-02_app:/var/lib/reviews	#Ruta de donde va a estar el volumen este
-#-----------------------------------------------------------
-#--Y por ultimo me defino el volumen------------------------
 
-	volumes:
-		02_app:
-
-	
+  reviews:
+    build: ./bookinfo/src/reviews/reviews-wlpcfg/reviewsV1/.
+    image: 02/reviews
+    container_name: 02-reviews
+    environment:
+      - SERVICE_VERSION=v1
+		
