@@ -5,7 +5,7 @@ COPY package.json /opt/microservices/
 COPY ratings.js /opt/microservices/
 WORKDIR /opt/microservices/
 ARG service_version
-ENV SERVICE_VERSION ${service_version:-v1}
+ENV SERVICE_VERSION ${service_version:-v1} #SIEMPRE ES V1, SE ESPECIFICA EN EL README
 RUN npm install #Para instalar las dependencias de node
 EXPOSE 9080
 CMD ["node", "ratings.js", "9080"]

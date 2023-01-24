@@ -12,5 +12,5 @@ ARG enable_ratings
 ARG star_color
 ENV SERVICE_VERSION ${service_version:-v1}
 ENV ENABLE_RATINGS ${enable_ratings:-false} #Se pone a false pq luego en el DOcker-compose se va a poner a true
-ENV STAR_COLOR ${star_color:-black}
+ENV STAR_COLOR ${star_color:-black} #Da igual pq está a false el enable ratings
 CMD ["/opt/ibm/wlp/bin/server", "run", "defaultServer"]
