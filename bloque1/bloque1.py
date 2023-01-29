@@ -4,6 +4,7 @@ import sys
 import json
 import time
 from subprocess import call
+
 call(["sudo apt-get update"], shell=True)
 #call(["echo 'y' | sudo apt-get update"], shell=True) #El eco para el mensaje por pantalla
 call(["sudo apt install python3-pip"], shell=True)	#Para poder usar pip (install)
@@ -14,7 +15,6 @@ call(["git clone https://github.com/angelfergen/practica2_bloque1.git"], shell=T
 call(["pip3 install -r practica2_bloque1/bookinfo/src/productpage/requirements.txt"],shell=True) #-r obliga a sobreescribir al copiar
 call(["pip3 install --upgrade requests"], shell=True)
 call(["sudo apt-get update"], shell=True)
-
 print("------------------HOLAAAAAAAAAAA todo instalado------------------")
 
 #Nos ponemos a modificar lo del group_number
@@ -45,17 +45,16 @@ for line in fin:
 fin.close()
 fout.close()
 
-call(["sudo cp practica2_bloque1/bookinfo/src/productpage/productpage_monolith2.py practica_creativa2/bookinfo/src/productpage/productpage_monolith.py"], shell= True)
+call(["sudo cp practica2_bloque1/bookinfo/src/productpage/productpage_monolith2.py practica2_bloque1/bookinfo/src/productpage/productpage_monolith.py"], shell= True)
 call(["sudo rm practica2_bloque1/bookinfo/src/productpage/productpage_monolith2.py"], shell= True)
 
-#-------------------------------------------------------------------------------
 
-#Nos ponemos a modificar el titulo del html
+#--------------------------------------Nos ponemos a modificar el titulo del html
 fin = open("practica2_bloque1/bookinfo/src/productpage/templates/productpage.html",'r')
 fout = open("practica2_bloque1/bookinfo/src/productpage/templates/productpage2.html",'w')
 
 for line in fin:
-	if "{% block title %}Simple Bookstore App{% endblock %}" in line:
+	if "{% block title %}Simple Bookstore App{% endblock %}" in line:	#Modifica el TITULO de la pestaña
 	#r, raw para poner caracteres tal cual
 	
 		fout.write("{% block title %}Simple Bookstore App{{details.equipo}}{% endblock %}")
@@ -65,7 +64,7 @@ for line in fin:
 fin.close()
 fout.close()
 
-call(["sudo cp practica2_bloque1/bookinfo/src/productpage/templates/productpage2.html practica_creativa2/bookinfo/src/productpage/templates/productpage.html"], shell= True)
+call(["sudo cp practica2_bloque1/bookinfo/src/productpage/templates/productpage2.html practica2_bloque1/bookinfo/src/productpage/templates/productpage.html"], shell= True)
 call(["sudo rm practica2_bloque1/bookinfo/src/productpage/templates/productpage2.html"], shell= True)
-
+#-------------------------------------------------------------------------------
 call(["sudo python3 practica2_bloque1/bookinfo/src/productpage/productpage_monolith.py 9080"],shell=True)
