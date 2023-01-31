@@ -6,10 +6,9 @@ import time
 from subprocess import call
 
 call(["sudo apt-get update"], shell=True)
-#call(["echo 'y' | sudo apt-get update"], shell=True) #El eco para el mensaje por pantalla
-call(["sudo apt install python3-pip"], shell=True)	#Para poder usar pip (install)
-#call(["echo 'y' | sudo apt install python3-pip"], shell=True) #El eco para el mensaje por pantalla
+call(["sudo apt install python3-pip"], shell=True) #Para poder usar pip (install)
 call(["git clone https://github.com/angelfergen/practica2_bloque1.git"], shell=True)
+
 #python3 -m pip= pip3
 
 call(["pip3 install -r practica2_bloque1/bookinfo/src/productpage/requirements.txt"],shell=True) #-r obliga a sobreescribir al copiar
